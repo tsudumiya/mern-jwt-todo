@@ -3,16 +3,16 @@ const express = require('express');
 const mongoose = require('mongoose');
 
 const app = express();
-const PORT = 5000;
 require('dotenv').config();
-const cors = require('cors');
+// const cors = require('cors');
+const PORT = process.env.PORT || 8080;
 
 app.use('/', express.static('build'));
-app.use(
-    cors({
-        origin: '*',
-    })
-);
+// app.use(
+//     cors({
+//         origin: '*',
+//     })
+// );
 app.use(express.json());
 app.use('/api/v1', require('./src/v1/routes'));
 

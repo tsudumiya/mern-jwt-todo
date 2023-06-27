@@ -2,6 +2,7 @@
     "name": "client",
     "version": "0.1.0",
     "private": true,
+    "proxy": "http://localhost:8080",
     "dependencies": {
         "@babel/core": "^7.16.0",
         "@emoji-mart/react": "^1.0.1",
