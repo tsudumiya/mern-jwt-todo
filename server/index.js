@@ -1,3 +1,4 @@
+const path = require('path');
 const express = require('express');
 const mongoose = require('mongoose');
 
@@ -6,6 +7,7 @@ const PORT = 5000;
 require('dotenv').config();
 const cors = require('cors');
 
+app.use('/', express.static('build'));
 app.use(
     cors({
         origin: 'http://localhost:3000',
@@ -14,8 +16,12 @@ app.use(
 app.use(express.json());
 app.use('/api/v1', require('./src/v1/routes'));
 
-app.get('/', (req, res) => {
-    res.send('Hello Express');
+// app.get('/', (req, res) => {
+//     res.send('Hello Express');
+// });
+app.get('*', function (req, res) {
+    const indexHtml = path.resolve('build', 'index.html');
+    res.sendFile(indexHtml);
 });
 
 // DB接続
